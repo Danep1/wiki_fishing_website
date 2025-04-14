@@ -21,7 +21,8 @@
     <!-- Правая половина - Приманки -->
     <div class="half-section bait-section">
         <div class="feature-card">
-            <img src="{{ random_bait.image.url }}" alt="{{ random_bait.name }}" class="card-image">
+            <img src="{% if random_bait.image %}{{ random_bait.image.url }}{% else %}{% static 'images/default-bait.png' %}{% endif %}"
+                alt="{{ random_bait.name }}">
             <div class="card-content">
                 <h2>{{ random_bait.name }}</h2>
                 <p>{{ random_bait.description|truncatewords:20 }}</p>

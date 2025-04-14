@@ -65,6 +65,8 @@
                         <img src="{% if bait.bait.image %}{{ bait.bait.image.url }}{% else %}{% static 'images/default-bait.png' %}{% endif %}"
                              alt="{{ bait.bait.name }}">
                     </div>
+                    {% empty %}
+                    <p>Нет данных о приманках для этой рыбы</p>
                     {% endfor %}
                 </div>
             </div>
