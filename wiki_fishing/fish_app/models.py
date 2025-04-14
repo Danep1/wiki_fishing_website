@@ -41,7 +41,7 @@ class Fish(models.Model):
         choices=FISH_TYPE_CHOICES,
         verbose_name="Тип питания"
     )
-    description = models.TextField(verbose_name="Описание")
+    description = models.TextField(verbose_name="Описание", blank=True)
 
     image = models.ImageField(
         upload_to='fish/',
@@ -55,15 +55,17 @@ class Fish(models.Model):
         max_length=20,
         choices=WATER_TYPE_CHOICES,
         verbose_name="Тип воды",
-        default='fresh'
+        default='fresh',
+        blank=True
     )
-    area = models.CharField(max_length=100, verbose_name="Ареал обитания")
+    area = models.CharField(max_length=100, verbose_name="Ареал обитания", blank=True)
 
     # Активность и поведение
     season_activity = models.CharField(
         max_length=10,
         choices=SEASON_ACTIVITY_CHOICES,
-        verbose_name="Сезон активности"
+        verbose_name="Сезон активности",
+        blank=True
     )
     best_catch_time = models.CharField(
         max_length=100,

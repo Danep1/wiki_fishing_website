@@ -271,60 +271,77 @@ a.btn {
 /* Списки элементов */
 .baits-list,
 .fishes-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
 }
 
 .bait-item,
 .fish-item {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  padding: 10px;
-  background: white;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  line-height: 1.4; /* Уменьшенный межстрочный интервал */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    line-height: 1.4; /* Уменьшенный межстрочный интервал */
+    text-align: center;
+}
+
+.bait-item h3,
+.fish-item h3 {
+    margin: 0 0 10px; /* Добавляем отступ снизу */
+    font-size: 1.2em;
 }
 
 .bait-item img,
 .fish-item img {
-  height: 100px;
-  border-radius: 5%;
-  object-fit: cover;
+    max-width: 100%;
+    height: auto; /* Убедимся, что высота подстраивается под содержимое */
+    border-radius: 5%;
+    object-fit: contain; /* Убедимся, что изображение масштабируется корректно */
+}
+
+.bait-item .bait-content,
+.fish-item .fish-content {
+    flex-grow: 1;
+    overflow: hidden; /* Добавляем скрытие переполнения */
 }
 
 .notes {
-  font-size: 0.9em;
-  color: #666;
-  font-style: italic;
-  margin-top: 5px;
-  line-height: 1.4; /* Уменьшенный межстрочный интервал */
+    font-size: 0.9em;
+    color: #666;
+    font-style: italic;
+    margin-top: 5px;
+    line-height: 1.4; /* Уменьшенный межстрочный интервал */
+    overflow: hidden; /* Добавляем скрытие переполнения */
+    text-overflow: ellipsis; /* Добавляем многоточие для обрезанного текста */
+    white-space: nowrap; /* Запрещаем перенос текста на новую строку */
 }
 
 /* ===== Адаптивность ===== */
 @media (max-width: 768px) {
-  .main-container {
-    flex-direction: column;
-  }
+    .main-container {
+        flex-direction: column;
+    }
 
-  .half-section {
-    padding: 10px;
-  }
+    .half-section {
+        padding: 10px;
+    }
 
-  .fish-grid,
-  .bait-grid {
-    grid-template-columns: 1fr;
-  }
+    .fish-grid,
+    .bait-grid {
+        grid-template-columns: 1fr;
+    }
 
-  .feature-card,
-  .fish-card,
-  .bait-card {
-    width: 100%;
-    max-width: none;
-    margin: 10px 0;
-  }
+    .feature-card,
+    .fish-card,
+    .bait-card {
+        width: 100%;
+        max-width: none;
+        margin: 10px 0;
+    }
 }
 /* Стили для форм */
 form {
@@ -355,13 +372,23 @@ form label {
 form input,
 form select,
 form textarea {
-    width: 100%;
-    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+    margin: 0 auto; /* Центрируем элемент */
+    display: block; /* Делаем элемент блочным */
 }
 
+form input,
+form textarea {
+    width: calc(100% - 10px); /* Уменьшаем ширину на 20px для отступов */
+    padding: 5px;
+}
+
+form select{
+    width: 100%; /* Уменьшаем ширину на 20px для отступов */
+    padding: 5px;
+}
 
 /* Стили для выпадающего списка */
 .form-control {

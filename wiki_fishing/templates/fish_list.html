@@ -8,10 +8,13 @@
     <div class="fish-grid">
         {% for fish in fishes %}
         <div class="fish-card">
-            <img src="{{ fish.image.url }}" alt="{{ fish.name }}">
+            <img src="{% if fish.image %}{{ fish.image.url }}{% else %}{% static 'images/default-fish.png' %}{% endif %}"
+                alt="{{ fish.name }}">
             <div class="fish-card-content">
                 <h2>{{ fish.name }}</h2>
-                <p>{{ fish.description|truncatewords:15 }}</p>
+                {% if fish.description %}
+                    <p>{{ fish.description|truncatewords:15 }}</p>
+                {% endif %}
                 <a href="{% url 'fish_detail' fish.id %}" class="btn">Подробнее</a>
             </div>
         </div>

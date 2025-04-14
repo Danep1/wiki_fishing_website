@@ -30,12 +30,9 @@
                 <div class="baits-list">
                     {% for bait in baits %}
                     <div class="bait-item">
-                        <img src="{{ bait.bait.image.url }}" alt="{{ bait.bait.name }}">
-                        <div>
-                            <h3>{{ bait.bait.name }}</h3>
-                            <p>Эффективность: {{ bait.efficiency }}/5</p>
-                            <p>{{ bait.notes }}</p>
-                        </div>
+                        <h3>{{ bait.bait.name }}</h3>
+                        <img src="{% if bait.bait.image.url %}{{ bait.bait.image.url }}{% else %}{% static 'images/default-bait.png' %}{% endif %}"
+                        alt="{{ bait.bait.name }}">
                     </div>
                     {% endfor %}
                 </div>
