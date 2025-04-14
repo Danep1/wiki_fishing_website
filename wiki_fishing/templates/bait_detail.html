@@ -31,7 +31,7 @@
                     {% for relation in relations %}
                     <div class="fish-item">
                         <h3>{{ relation.fish.name }}</h3>
-                        <img src="{% if relation.fish.image.url %}{{ relation.fish.image.url }}{% else %}{% static 'images/default-fish.png' %}{% endif %}"
+                        <img src="{% if relation.fish.image %}{{ relation.fish.image.url }}{% else %}{% static 'images/default-fish.png' %}{% endif %}"
                         alt="{{ relation.fish.name }}">
                     </div>
                     {% empty %}

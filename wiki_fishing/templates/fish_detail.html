@@ -62,7 +62,7 @@
                     {% for bait in baits %}
                     <div class="bait-item">
                         <h3>{{ bait.bait.name }}</h3>
-                        <img src="{% if bait.bait.image.url %}{{ bait.bait.image.url }}{% else %}{% static 'images/default-bait.png' %}{% endif %}"
+                        <img src="{% if bait.bait.image %}{{ bait.bait.image.url }}{% else %}{% static 'images/default-bait.png' %}{% endif %}"
                              alt="{{ bait.bait.name }}">
                     </div>
                     {% endfor %}

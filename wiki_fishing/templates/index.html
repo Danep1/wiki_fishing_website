@@ -6,7 +6,9 @@
     <!-- Левая половина - Рыбы -->
     <div class="half-section fish-section">
         <div class="feature-card">
-            <img src="{{ random_fish.image.url }}" alt="{{ random_fish.name }}" class="card-image">
+            <img src="{% if random_fish.image %}{{ random_fish.image.url }}{% else %}{% static 'images/default-fish.png' %}{% endif %}"
+                 alt="{{ random_fish.name }}">
+
             <div class="card-content">
                 <h2>{{ random_fish.name }}</h2>
                 <p>{{ random_fish.description|truncatewords:20 }}</p>
