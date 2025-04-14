@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Добавить новую рыбу</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="form-group">
+        <label for="id_baits">Приманки:</label>
+        <select name="baits" id="id_baits" class="form-control" multiple>
+            {% for bait in baits %}
+                <option value="{{ bait.id }}">{{ bait.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn">Сохранить</button>
+    <a href="{% url 'index' %}" class="btn btn-back">Назад</a>
+</form>
+{% endblock %}

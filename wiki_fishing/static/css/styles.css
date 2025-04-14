@@ -1,0 +1,373 @@
+/* static/css/styles.css */
+
+/* ===== Базовые стили ===== */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  color: #333;
+  line-height: 1.4; /* Уменьшенный межстрочный интервал */
+}
+
+.container, .fish-list-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1, .page-title {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #2c3e50;
+  line-height: 1.2; /* Уменьшенный межстрочный интервал для заголовков */
+}
+
+textarea {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===== Общие компоненты ===== */
+/* Карточки */
+.feature-card,
+.fish-card,
+.bait-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-card:hover,
+.fish-card:hover,
+.bait-card:hover {
+  transform: translateY(-5px);
+}
+/* Стили для шапки */
+.site-header {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    margin: 0; /* Убедимся, что нет внешних отступов */
+    width: 100%; /* Убедимся, что шапка занимает всю ширину */
+}
+
+.site-header .site-title {
+    margin: 0;
+    font-size: 2em;
+}
+
+.site-header .site-description {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+.site-header .header-image {
+    max-width: 100px;
+    border-radius: 50%;
+}
+
+/* Стили для подвала */
+.site-footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 0px 0;
+    text-align: center;
+    width: 100%;
+    bottom: 0;
+    position: fixed; /* Изменим на relative */
+    margin: 0; /* Убедимся, что нет внешних отступов */
+}
+
+.site-footer .footer-text {
+    margin: 0;
+    font-size: 1em;
+}
+
+/* Стили для основного контента */
+.site-content {
+    padding-bottom: 50px; /* Увеличим отступ снизу */
+    margin: 0; /* Убедимся, что нет внешних отступов */
+}
+
+
+/* Контейнеры изображений */
+.card-image-container,
+.fish-card-image-container,
+.bait-card-image-container,
+.detail-image-container {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto; /* Убедимся, что высота подстраивается под содержимое */
+}
+
+.card-image-container { height: 250px; }
+.fish-card-image-container,
+.bait-card-image-container { height: 200px; }
+.detail-image-container { height: 300px; }
+
+/* Изображения */
+.card-image,
+.fish-card img,
+.bait-card img,
+.detail-image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Убедимся, что изображение масштабируется корректно */
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover .card-image,
+.fish-card:hover img,
+.bait-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Контент карточек */
+.card-content,
+.fish-card-content,
+.bait-card-content {
+  padding: 15px 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.4; /* Уменьшенный межстрочный интервал */
+}
+
+/* Кнопки */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    margin-top: 15px;
+    background-color: #3498db;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 19.2px;
+    font-size: 20px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    line-height: 1.2; /* Уменьшенный межстрочный интервал для кнопок */
+}
+
+.btn:hover {
+  background-color: #3b7dd8;
+}
+
+.btn-back {
+    background-color: #e74c3c;
+}
+
+.btn-back:hover {
+    background-color: #c0392b;
+}
+
+button.btn,
+a.btn {
+    appearance: none; /* Убираем стандартные стили браузера */
+    -webkit-appearance: none; /* Убираем стандартные стили для WebKit-браузеров */
+    -moz-appearance: none; /* Убираем стандартные стили для Firefox */
+}
+
+/* ===== Специфичные стили ===== */
+/* Главная страница */
+.main-container {
+  display: flex;
+  min-height: 80vh;
+}
+
+.half-section {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fish-section { background-color: #e6f7ff; }
+.bait-section { background-color: #fff2e6; }
+
+.feature-card {
+  max-width: 400px;
+  text-align: center;
+  line-height: 1.4; /* Уменьшенный межстрочный интервал */
+}
+
+/* Списки */
+.fish-grid,
+.bait-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.fish-card,
+.bait-card {
+  width: 300px;
+  height: 400px;
+  margin: 0px;
+}
+
+/* Модальные окна */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 800px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  line-height: 1.4; /* Уменьшенный межстрочный интервал */
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Детальные секции */
+.detail-section {
+  margin: 20px 0;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  line-height: 1.4; /* Уменьшенный межстрочный интервал */
+}
+
+/* Списки элементов */
+.baits-list,
+.fishes-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 15px;
+}
+
+.bait-item,
+.fish-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  line-height: 1.4; /* Уменьшенный межстрочный интервал */
+}
+
+.bait-item img,
+.fish-item img {
+  height: 100px;
+  border-radius: 5%;
+  object-fit: cover;
+}
+
+.notes {
+  font-size: 0.9em;
+  color: #666;
+  font-style: italic;
+  margin-top: 5px;
+  line-height: 1.4; /* Уменьшенный межстрочный интервал */
+}
+
+/* ===== Адаптивность ===== */
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+  }
+
+  .half-section {
+    padding: 10px;
+  }
+
+  .fish-grid,
+  .bait-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-card,
+  .fish-card,
+  .bait-card {
+    width: 100%;
+    max-width: none;
+    margin: 10px 0;
+  }
+}
+/* Стили для форм */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px; /* Добавим отступ снизу для формы */
+}
+
+form h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form .form-group {
+    margin-bottom: 15px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+
+/* Стили для выпадающего списка */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}

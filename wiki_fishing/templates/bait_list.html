@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="bait-list-container">
+    <h1>Все приманки</h1>
+
+    <div class="bait-grid">
+        {% for bait in baits %}
+        <div class="bait-card">
+            <div class="bait-card-image-container">
+                <img src="{% if bait.image %}{{ bait.image.url }}{% else %}{% static 'images/default-bait.png' %}{% endif %}"
+                alt="{{ bait.name }}">
+            </div>
+            <div class="bait-card-content">
+                <h2>{{ bait.name }}</h2>
+                <p>Тип: {{ bait.get_type_display }}</p>
+                <p>Ценовая категория: {{ bait.get_price_category_display }}</p>
+                <a href="{% url 'bait_detail' bait.id %}" class="btn">Подробнее</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Кнопка "На главную" -->
+    <a href="{% url 'index' %}" class="btn btn-back">На главную</a>
+</div>
+{% endblock %}

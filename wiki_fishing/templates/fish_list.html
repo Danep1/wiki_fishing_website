@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="fish-list-container">
+    <h1 class="page-title">Все виды рыб</h1>
+
+    <div class="fish-grid">
+        {% for fish in fishes %}
+        <div class="fish-card">
+            <img src="{{ fish.image.url }}" alt="{{ fish.name }}">
+            <div class="fish-card-content">
+                <h2>{{ fish.name }}</h2>
+                <p>{{ fish.description|truncatewords:15 }}</p>
+                <a href="{% url 'fish_detail' fish.id %}" class="btn">Подробнее</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Кнопка "На главную" -->
+    <a href="{% url 'index' %}" class="btn btn-back">На главную</a>
+</div>
+{% endblock %}

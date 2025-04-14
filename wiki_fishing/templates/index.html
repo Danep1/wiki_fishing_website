@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="main-container">
+    <!-- Левая половина - Рыбы -->
+    <div class="half-section fish-section">
+        <div class="feature-card">
+            <img src="{{ random_fish.image.url }}" alt="{{ random_fish.name }}" class="card-image">
+            <div class="card-content">
+                <h2>{{ random_fish.name }}</h2>
+                <p>{{ random_fish.description|truncatewords:20 }}</p>
+            </div>
+            <a href="{% url 'fish_list' %}" class="btn">Все виды рыб</a>
+            <a href="{% url 'add_fish' %}" class="btn">Добавить вид рыбы</a>
+        </div>
+    </div>
+
+    <!-- Правая половина - Приманки -->
+    <div class="half-section bait-section">
+        <div class="feature-card">
+            <img src="{{ random_bait.image.url }}" alt="{{ random_bait.name }}" class="card-image">
+            <div class="card-content">
+                <h2>{{ random_bait.name }}</h2>
+                <p>{{ random_bait.description|truncatewords:20 }}</p>
+            </div>
+            <a href="{% url 'bait_list' %}" class="btn">Все приманки</a>
+            <a href="{% url 'add_bait' %}" class="btn">Добавить приманку</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

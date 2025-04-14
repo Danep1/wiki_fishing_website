@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="modal-overlay">
+    <div class="modal-content">
+        <button class="close-modal">&times;</button>
+
+        <div class="fish-detail">
+            <div class="detail-image-container">
+                <img src="{% if fish.image %}{{ fish.image.url }}{% else %}{% static 'images/default-fish.png' %}{% endif %}"
+                     alt="{{ fish.name }}">
+            </div>
+            <h1>{{ fish.name }}</h1>
+
+            <div class="detail-section">
+                <h2>Описание</h2>
+                <p>{{ fish.description }}</p>
+            </div>
+
+            <div class="detail-section">
+                <h2>Характеристики</h2>
+                <p><strong>Тип:</strong> {{fish.get_type_display}}</p>
+                <p><strong>Средний вес:</strong> {{fish.avg_weight}} кг</p>
+                <p><strong>Средняя длина:</strong> {{fish.avg_length}} см</p>
+            </div>
+
+            <div class="detail-section">
+                <h2>Эффективные приманки</h2>
+                <div class="baits-list">
+                    {% for bait in baits %}
+                    <div class="bait-item">
+                        <img src="{{ bait.bait.image.url }}" alt="{{ bait.bait.name }}">
+                        <div>
+                            <h3>{{ bait.bait.name }}</h3>
+                            <p>Эффективность: {{ bait.efficiency }}/5</p>
+                            <p>{{ bait.notes }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

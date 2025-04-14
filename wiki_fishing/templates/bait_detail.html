@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="modal-overlay">
+    <div class="modal-content">
+        <button class="close-modal">&times;</button>
+        
+        <div class="bait-detail">
+            <div class="detail-image-container">
+                <img src="{% if bait.image %}{{ bait.image.url }}{% else %}{% static 'images/default-bait.png' %}{% endif %}"
+                alt="{{ bait.name }}">
+            </div>
+            <h1>{{ bait.name }}</h1>
+            
+            <div class="detail-section">
+                <h2>Описание</h2>
+                <p>{{ bait.description }}</p>
+            </div>
+            
+            <div class="detail-section">
+                <h2>Характеристики</h2>
+                <p><strong>Тип:</strong> {{ bait.get_type_display }}</p>
+                <p><strong>Ценовая категория:</strong> {{ bait.get_price_category_display }}</p>
+                <p><strong>Рейтинг:</strong> {{ bait.rating }}/5</p>
+            </div>
+            
+            <div class="detail-section">
+                <h2>Эффективна для рыб</h2>
+                <div class="fishes-list">
+                    {% for relation in relations %}
+                    <div class="fish-item">
+                        <img src="{{ relation.fish.image.url }}" alt="{{ relation.fish.name }}">
+                        <div>
+                            <h3>{{ relation.fish.name }}</h3>
+                            <p>Эффективность: {{ relation.efficiency }}/5</p>
+                            {% if relation.notes %}
+                            <p class="notes">{{ relation.notes }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p>Нет данных о рыбах для этой приманки</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
