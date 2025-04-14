@@ -1,8 +1,9 @@
+import random
+
 from django.shortcuts import render, get_object_or_404, redirect
 
 from .forms import FishForm, BaitForm
 from .models import Fish, Bait, FishBaitRelation
-import random
 
 def index(request):
     # Получаем случайную рыбу и приманку

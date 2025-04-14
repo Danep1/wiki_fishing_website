@@ -1,8 +1,9 @@
 import os
-from django.core.files import File
+
 from django.core.management.base import BaseCommand
-from fish_app.models import Fish, Bait, FishBaitRelation
 from django.conf import settings
+
+from fish_app.models import Fish, Bait, FishBaitRelation
 
 class Command(BaseCommand):
     help = 'Загружает тестовые данные с изображениями'
@@ -280,7 +281,7 @@ class Command(BaseCommand):
 
         # Создаём связи между рыбами и приманками
         relations = [
-            {'fish': 'Карп', 'bait': 'Червь дождевой', 'efficiency': 5, 'notes': 'Лучше работает в тёплой воде'},
+
             {'fish': 'Ёрш', 'bait': 'Червь дождевой', 'efficiency': 4, 'notes': 'Клюёт на мелкого червя'},
             {'fish': 'Окунь', 'bait': 'Червь дождевой', 'efficiency': 3, 'notes': 'Предпочитает красных червей'},
             {'fish': 'Окунь', 'bait': 'Блесна', 'efficiency': 5, 'notes': 'Идеальна блесна 3-5 см'},

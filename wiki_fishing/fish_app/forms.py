@@ -12,7 +12,6 @@ class FishForm(forms.ModelForm):
         ]
 
 
-
 class BaitForm(forms.ModelForm):
     class Meta:
         model = Bait

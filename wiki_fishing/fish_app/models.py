@@ -1,7 +1,7 @@
 import os
 
 from django.db import models
-from django.core.validators import MinValueValidator, MaxValueValidator, MinLengthValidator
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Fish(models.Model):
     """Модель для хранения информации о видах рыбы"""
