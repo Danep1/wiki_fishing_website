@@ -15,14 +15,45 @@
 
             <div class="detail-section">
                 <h2>Описание</h2>
-                <p>{{ fish.description }}</p>
+                {% if fish.description %}
+                    <p>{{ fish.description }}</p>
+                {% else %}
+                    <p>Описание отсутствует.</p>
+                {% endif %}
             </div>
 
             <div class="detail-section">
                 <h2>Характеристики</h2>
-                <p><strong>Тип:</strong> {{fish.get_type_display}}</p>
-                <p><strong>Средний вес:</strong> {{fish.avg_weight}} кг</p>
-                <p><strong>Средняя длина:</strong> {{fish.avg_length}} см</p>
+                {% if fish.scientific_name %}
+                    <p><strong>Научное название:</strong> {{ fish.scientific_name }}</p>
+                {% endif %}
+                {% if fish.type %}
+                    <p><strong>Тип:</strong> {{ fish.get_type_display }}</p>
+                {% endif %}
+                {% if fish.avg_weight %}
+                    <p><strong>Средний вес:</strong> {{ fish.avg_weight }} кг</p>
+                {% endif %}
+                {% if fish.max_weight %}
+                    <p><strong>Максимальный вес:</strong> {{ fish.max_weight }} кг</p>
+                {% endif %}
+                {% if fish.avg_length %}
+                    <p><strong>Средняя длина:</strong> {{ fish.avg_length }} см</p>
+                {% endif %}
+                {% if fish.habitat %}
+                    <p><strong>Среда обитания:</strong> {{ fish.get_habitat_display }}</p>
+                {% endif %}
+                {% if fish.area %}
+                    <p><strong>Район обитания:</strong> {{ fish.area }}</p>
+                {% endif %}
+                {% if fish.season_activity %}
+                    <p><strong>Сезон активности:</strong> {{ fish.get_season_activity_display }}</p>
+                {% endif %}
+                {% if fish.best_catch_time %}
+                    <p><strong>Лучшее время для ловли:</strong> {{ fish.get_best_catch_time_display }}</p>
+                {% endif %}
+                {% if fish.is_red_book is not None %}
+                    <p><strong>В Красной книге:</strong> {{ fish.is_red_book|yesno:"Да,Нет" }}</p>
+                {% endif %}
             </div>
 
             <div class="detail-section">
@@ -32,7 +63,7 @@
                     <div class="bait-item">
                         <h3>{{ bait.bait.name }}</h3>
                         <img src="{% if bait.bait.image.url %}{{ bait.bait.image.url }}{% else %}{% static 'images/default-bait.png' %}{% endif %}"
-                        alt="{{ bait.bait.name }}">
+                             alt="{{ bait.bait.name }}">
                     </div>
                     {% endfor %}
                 </div>
@@ -40,5 +71,4 @@
         </div>
     </div>
 </div>
-
 {% endblock %}

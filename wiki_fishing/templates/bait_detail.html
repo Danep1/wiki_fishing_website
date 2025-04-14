@@ -30,14 +30,9 @@
                 <div class="fishes-list">
                     {% for relation in relations %}
                     <div class="fish-item">
-                        <img src="{{ relation.fish.image.url }}" alt="{{ relation.fish.name }}">
-                        <div>
-                            <h3>{{ relation.fish.name }}</h3>
-                            <p>Эффективность: {{ relation.efficiency }}/5</p>
-                            {% if relation.notes %}
-                            <p class="notes">{{ relation.notes }}</p>
-                            {% endif %}
-                        </div>
+                        <h3>{{ relation.fish.name }}</h3>
+                        <img src="{% if relation.fish.image.url %}{{ relation.fish.image.url }}{% else %}{% static 'images/default-fish.png' %}{% endif %}"
+                        alt="{{ relation.fish.name }}">
                     </div>
                     {% empty %}
                     <p>Нет данных о рыбах для этой приманки</p>

@@ -94,7 +94,6 @@ textarea {
     margin: 0; /* Убедимся, что нет внешних отступов */
 }
 
-
 /* Контейнеры изображений */
 .card-image-container,
 .fish-card-image-container,
@@ -111,7 +110,7 @@ textarea {
 .card-image-container { height: 250px; }
 .fish-card-image-container,
 .bait-card-image-container { height: 200px; }
-.detail-image-container { height: 300px; }
+.detail-image-container { height: auto; }
 
 /* Изображения */
 .card-image,
@@ -263,6 +262,7 @@ a.btn {
 }
 
 .modal-content {
+  height: auto;
   background: white;
   padding: 30px;
   border-radius: 10px;
