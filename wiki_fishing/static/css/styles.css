@@ -118,11 +118,9 @@ textarea {
 .fish-card img,
 .bait-card img,
 .detail-image-container img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain; /* Убедимся, что изображение масштабируется корректно */
-    display: block;
-    transition: transform 0.3s ease;
+    width: 100%;
+    height: auto; /* Убедимся, что высота подстраивается под содержимое */
+    object-fit: cover;
 }
 
 .feature-card:hover .card-image,
@@ -131,15 +129,38 @@ textarea {
     transform: scale(1.05);
 }
 
+.fish-card:hover,
+.bait-card:hover {
+    transform: translateY(-5px);
+}
+
 /* Контент карточек */
 .card-content,
 .fish-card-content,
 .bait-card-content {
-  padding: 15px 20px;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  line-height: 1.4; /* Уменьшенный межстрочный интервал */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px 20px;
+}
+
+.fish-card-content h2,
+.bait-card-content h2 {
+    margin: 0 0 10px;
+    font-size: 1.5em;
+}
+
+.fish-card-content p,
+.bait-card-content p {
+    margin: 0 0 10px;
+    font-size: 1em;
+    color: #666;
+}
+
+.fish-card-content .btn,
+.bait-card-content .btn {
+    margin-top: auto; /* Прижимаем кнопку к низу карточки */
 }
 
 /* Кнопки */
@@ -218,9 +239,13 @@ a.btn {
 
 .fish-card,
 .bait-card {
-  width: 300px;
-  height: 400px;
-  margin: 0px;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
 }
 
 /* Модальные окна */
