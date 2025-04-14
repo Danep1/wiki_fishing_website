@@ -100,11 +100,6 @@ class Fish(models.Model):
     def __str__(self):
         return f"{self.name} ({self.get_type_display()})"
 
-    def save(self, *args, **kwargs):
-        if self.image and not self.image.name.startswith('fish/'):
-            self.image.name = f'fish/{os.path.basename(self.image.name)}'
-        super().save(*args, **kwargs)
-
     def get_fishing_period(self):
         """Возвращает информацию о лучшем периоде ловли"""
         period = []
@@ -162,7 +157,7 @@ class Bait(models.Model):
         choices=BAIT_TYPE_CHOICES,
         verbose_name="Тип приманки",
     )
-    description = models.TextField(verbose_name="Описание")
+    description = models.TextField(verbose_name="Описание", blank=True)
     image = models.ImageField(
         upload_to='baits/',
         verbose_name="Изображение",
@@ -191,11 +186,6 @@ class Bait(models.Model):
         blank=True,
         validators=[MinValueValidator(1), MaxValueValidator(5)],
     )
-
-    def save(self, *args, **kwargs):
-        if self.image and not self.image.name.startswith('baits/'):
-            self.image.name = f'baits/{os.path.basename(self.image.name)}'
-        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = "Приманка"

@@ -10,12 +10,6 @@ body {
   line-height: 1.4; /* Уменьшенный межстрочный интервал */
 }
 
-.container, .fish-list-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
 h1, .page-title {
   text-align: center;
   margin-bottom: 10px;
@@ -107,9 +101,9 @@ textarea {
     height: auto; /* Убедимся, что высота подстраивается под содержимое */
 }
 
-.card-image-container { height: 250px; }
+.card-image-container { height: auto; }
 .fish-card-image-container,
-.bait-card-image-container { height: 200px; }
+.bait-card-image-container { height: auto; }
 .detail-image-container { height: auto; }
 
 /* Изображения */
